@@ -1,3 +1,68 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components{
+    .story__item{
+        @apply bg-[#39394f] text-xs rounded-md p-2 text-[#E9F8F9] cursor-pointer hover:bg-[#43435b] transition-[0.5s] truncate
+    }
+
+    .dark__blue__button{
+        @apply text-[#E9F8F9] flex items-center justify-center space-x-2 border-[1px] border-gray-200 w-32 p-1 rounded-md cursor-pointer hover:bg-[#37374d] transition-[0.5s] 
+    }
+
+    .input__lable{
+        @apply text-base font-semibold text-[#181823]
+    }
+
+    .input__box{
+        @apply w-full p-2 rounded-sm text-sm font-semibold text-[#181823] border-[1px] border-[#537FE7] bg-white focus:outline-none
+    }
+    
+}
+
+.slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 10px;
+    background: #ffffff;
+    border-radius: 10px;
+    outline: none;
+    border: 1px solid #537FE7;
+    -webkit-transition: .4s;
+    transition: opacity .4s;
+}
+  
+.slider:hover {
+    opacity: 1;
+}
+  
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    background: #537FE7;
+    cursor: pointer;
+}
+  
+.slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    background: rgb(255, 141, 141);
+    cursor: pointer;
+}
+
+.limit__text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 5; /* number of lines to show */
+            line-clamp: 5; 
+    -webkit-box-orient: vertical;
+ }
+
+ .box__shadow{
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+ }
