@@ -12,15 +12,16 @@ export default function Sidebar() {
         {/* Top Container */}
         <div className="flex flex-col items-center w-full" >
             {/* Logo */}
-            <div className="text-xl font-medium text-[#E9F8F9] pt-6 pb-6">DiffuseDraw</div>
+            <div className="text-xl font-bold text-[#E9F8F9] pt-6 pb-6">DiffuseDraw</div>
 
             {/* Your Stories */}
             <div className="w-full pl-2 pr-2 flex flex-col space-y-2" >
                 <div className="text-[#C0EEF2] text-base font-medium" >Your stories</div>
+                
+                <div className="story__item" >HARRY POTTER AND THE SORCERER S STONE</div>
                 <div className="story__item" >Noah's Arc</div>
-                <div className="story__item" >Your Name</div>
-                <div className="story__item" >Lorem Ipsum</div>
-                <div className="story__item" >Amet consectetur adipisicing</div>
+                <div className="story__item" >The Yellow Wallpaper</div>
+                <div className="story__item" >Animal Farm</div>
             </div>
         </div>
         

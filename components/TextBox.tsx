@@ -1,15 +1,21 @@
 import { MoonLoader } from "react-spinners";
-export default function TextBox() {
+type promptProps = {
+  prompt: string;
+  id: number;
+};
+export default function TextBox({prompt, id} : promptProps) {
   return (
     <div className="bg-white p-3 rounded-md box__shadow " >
         {/* Title */}
         <div className="text-xl font-bold mb-2" >
-            Section - 1
+            Section - {id}
         </div>
 
         {/* Content */}
         <div className="text-xs mb-5 limit__text " >
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam, perspiciatis ipsam. Tempore, eligendi totam! Possimus expedita, eaque repudiandae reprehenderit magnam corporis voluptatibus nam sunt adipisci iusto, saepe nisi alias ea.
+            {
+              prompt
+            }
         </div>
 
         {/* Status */}
