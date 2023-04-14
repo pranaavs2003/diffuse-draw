@@ -1,7 +1,6 @@
-import TextBox from "./TextBox"
-import ArrowRightIcon from '@mui/icons-material/ArrowRight';
-import ArrowLeftIcon from '@mui/icons-material/ArrowLeft';
-
+"use client"
+import { useState, useEffect } from "react";
+import TextBox from "./TextBox";
 const prompts = [
   "Dark at this hour, except for the STREET LAMPS that dot the street, spilling deep pools of light upon the ground.",
   "On the far corner, a MAN MATERIALIZES out of the darkness. He is tall and thin, with a silver beard long enough to tuck into his belt. He wears a PURPLE CLOAK and is roughly one hundred and fifty years old. He is ALBUS DUMBLEDORE.",
@@ -9,6 +8,15 @@ const prompts = [
 ];
 
 export default function Output() {
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState(""); 
+
+  useEffect(() => {
+    console.log("Title: "+title);
+    console.log("Content: "+content);
+  }, [title, content])
+  
+
   return (
     <div className="bg-[#E9F8F9] flex-1 h-screen p-8 lg:pt-8 lg:pr-36 lg:pl-36" >
       {/* Top Container */}
@@ -21,13 +29,17 @@ export default function Output() {
         {/* Left Container */}
         <div className="flex flex-col w-4/6 rounded-sm p-5 space-y-2 " >
             {/* Page */}
-            <div className="bg-white h-[550px] w-[388px] box__shadow" >
+            
+            {/* <div className="bg-white h-[550px] w-[388px] box__shadow" >
                 content goes here
-            </div>
-            <div className="flex space-x-4" >
-                <span className="p-[3px] cursor-pointer bg-white rounded-full box__shadow" ><ArrowLeftIcon /></span>
-                <span className="p-[3px] cursor-pointer bg-white rounded-full box__shadow" ><ArrowRightIcon /></span>
-            </div>
+            </div> */}
+
+            <input className="w-3/4 rounded-sm p-3 font-bold text-lg text-[#181823]" placeholder="Title goes here" type="text" name="title" id="title" onChange={(e) => setTitle(e.target.value)} />
+
+            <textarea className="w-3/4 rounded-sm p-3 font-normal text-base text-[#181823]" placeholder="Content goes here..." name="title" id="title" onChange={(e) => setContent(e.target.value)} ></textarea>
+
+            <div className="font-medium text-lg ml-1 w-fit p-2 pl-4 pr-4 rounded-md cursor-pointer bg-[#7979bf] text-white hover:scale-95 transition-[0.3]" >Generate</div>
+
 
         </div>
 
