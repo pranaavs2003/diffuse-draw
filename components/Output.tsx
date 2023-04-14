@@ -1,5 +1,6 @@
 "use client"
 import { useState, useEffect } from "react";
+import axios from "axios";
 import TextBox from "./TextBox";
 const prompts = [
   "Dark at this hour, except for the STREET LAMPS that dot the street, spilling deep pools of light upon the ground.",
@@ -10,12 +11,29 @@ const prompts = [
 export default function Output() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState(""); 
+  const [summarized, setSummarized] = useState<Array<String>>([]);
+
+
+  const addSummarized = () => {
+    console.log(content);
+    const s = content.split('.');
+    setSummarized(s);
+
+    const generateImage = async (prompt: string) => {
+      const data = {prompt};
+      const res = await axios.post('http://127.0.0.1:8000/generate', data);
+      console.log("🆚",res);
+    };
+
+    for(let i=0;i<3;i+=1){
+      generateImage(s[i]);
+    }
+  };
 
   useEffect(() => {
-    console.log("Title: "+title);
-    console.log("Content: "+content);
-  }, [title, content])
-  
+    console.log(summarized);
+  }, [summarized]);
+
 
   return (
     <div className="bg-[#E9F8F9] flex-1 h-screen p-8 lg:pt-8 lg:pr-36 lg:pl-36" >
@@ -28,18 +46,12 @@ export default function Output() {
       <div className="h-screen flex flex-1" >
         {/* Left Container */}
         <div className="flex flex-col w-4/6 rounded-sm p-5 space-y-2 " >
-            {/* Page */}
-            
-            {/* <div className="bg-white h-[550px] w-[388px] box__shadow" >
-                content goes here
-            </div> */}
 
             <input className="w-3/4 rounded-sm p-3 font-bold text-lg text-[#181823]" placeholder="Title goes here" type="text" name="title" id="title" onChange={(e) => setTitle(e.target.value)} />
 
             <textarea className="w-3/4 rounded-sm p-3 font-normal text-base text-[#181823]" placeholder="Content goes here..." name="title" id="title" onChange={(e) => setContent(e.target.value)} ></textarea>
 
-            <div className="font-medium text-lg ml-1 w-fit p-2 pl-4 pr-4 rounded-md cursor-pointer bg-[#7979bf] text-white hover:scale-95 transition-[0.3]" >Generate</div>
-
+            <div onClick={() => addSummarized()} className="font-medium text-lg ml-1 w-fit p-2 pl-4 pr-4 rounded-md cursor-pointer bg-[#7979bf] text-white hover:scale-95 transition-[0.3]" >Generate</div>
 
         </div>
 
